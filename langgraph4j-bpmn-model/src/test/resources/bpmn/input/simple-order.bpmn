@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0c9cq5v" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <bpmn:process id="Process_1030jyo" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_15q31fq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="Event_16g429j" name="Order Complete">
+      <bpmn:incoming>Flow_1dgjiky</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_15q31fq" sourceRef="StartEvent_1" targetRef="Activity_1i5vh1a" />
+    <bpmn:sequenceFlow id="Flow_1i22ord" sourceRef="Activity_1i5vh1a" targetRef="Activity_05fab5p" />
+    <bpmn:sequenceFlow id="Flow_1m67093" sourceRef="Activity_05fab5p" targetRef="Activity_1fifqge" />
+    <bpmn:sequenceFlow id="Flow_0amvz8o" sourceRef="Activity_1fifqge" targetRef="Activity_11ynsyw" />
+    <bpmn:sequenceFlow id="Flow_1dgjiky" sourceRef="Activity_11ynsyw" targetRef="Event_16g429j" />
+    <bpmn:serviceTask id="Activity_1i5vh1a" name="Receive Order">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="serviceLambdaName" value="TODO" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_15q31fq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1i22ord</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_05fab5p" name="Check Credit">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="serviceLambdaName" value="TODO" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1i22ord</bpmn:incoming>
+      <bpmn:outgoing>Flow_1m67093</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_1fifqge" name="Fulfil Order">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="serviceLambdaName" value="TODO" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1m67093</bpmn:incoming>
+      <bpmn:outgoing>Flow_0amvz8o</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_11ynsyw" name="Send Invoice">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="serviceLambdaName" value="TODO" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0amvz8o</bpmn:incoming>
+      <bpmn:outgoing>Flow_1dgjiky</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1030jyo">
+      <bpmndi:BPMNEdge id="Flow_1dgjiky_di" bpmnElement="Flow_1dgjiky">
+        <di:waypoint x="880" y="120" />
+        <di:waypoint x="952" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0amvz8o_di" bpmnElement="Flow_0amvz8o">
+        <di:waypoint x="690" y="120" />
+        <di:waypoint x="780" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1m67093_di" bpmnElement="Flow_1m67093">
+        <di:waypoint x="510" y="120" />
+        <di:waypoint x="590" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i22ord_di" bpmnElement="Flow_1i22ord">
+        <di:waypoint x="340" y="120" />
+        <di:waypoint x="410" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15q31fq_di" bpmnElement="Flow_15q31fq">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="240" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="145" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16g429j_di" bpmnElement="Event_16g429j">
+        <dc:Bounds x="952" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="933" y="145" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1r6pkfo_di" bpmnElement="Activity_1i5vh1a">
+        <dc:Bounds x="240" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15ak5tb_di" bpmnElement="Activity_05fab5p">
+        <dc:Bounds x="410" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1n4n67x_di" bpmnElement="Activity_1fifqge">
+        <dc:Bounds x="590" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ixmyxv_di" bpmnElement="Activity_11ynsyw">
+        <dc:Bounds x="780" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

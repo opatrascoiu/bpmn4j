@@ -12,6 +12,9 @@
     <packaging>jar</packaging>
 
     <properties>
+        <bpmn.schema>${project.basedir}/src/main/resources/bpmn/2.0/BPMN20.xsd</bpmn.schema>
+
+        <jaxb.generated.bpmn>${project.basedir}/target/generated-sources/jaxb</jaxb.generated.bpmn>
     </properties>
 
     <dependencies>
@@ -37,6 +40,32 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>1.5.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.xmlunit</groupId>
+            <artifactId>xmlunit-core</artifactId>
+            <version>2.13.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.22.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -44,6 +73,56 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>${jaxb.generated.bpmn}</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <executions>
+                    <execution>
+                        <id>bpmn</id>
+                        <configuration>
+                            <sources>
+                                <source>${bpmn.schema}</source>
+                            </sources>
+                            <outputDirectory>${jaxb.generated.bpmn}</outputDirectory>
+                            <clearOutputDir>false</clearOutputDir>
+                            <noPackageLevelAnnotations>false</noPackageLevelAnnotations>
+                            <packageName>org.omg.spec.bpmn._20100524.model</packageName>
+                            <encoding>UTF-8</encoding>
+                        </configuration>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-source</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${jaxb.generated.bpmn}</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
