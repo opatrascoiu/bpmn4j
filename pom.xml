@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.workflow.langgraph4j-bpmn</groupId>
@@ -26,7 +27,7 @@
         <maven.version>3.9.10</maven.version>
 
         <slf4j.version>2.0.10</slf4j.version>
-        <log4j2.version>2.25.4</log4j2.version>
+        <log4j2.version>2.26.1</log4j2.version>
 
         <junit.version>5.10.1</junit.version>
         <mockito.version>5.20.0</mockito.version>
@@ -255,15 +256,12 @@
                                     <requireJavaVersion>
                                         <version>${java.version}</version>
                                     </requireJavaVersion>
-                                    <dependencyConvergence />
+                                    <dependencyConvergence/>
                                     <requirePluginVersions>
                                         <banLatest>true</banLatest>
                                         <banRelease>true</banRelease>
                                         <banSnapshots>${ban.snapshot}</banSnapshots>
                                         <phases>clean,deploy,site</phases>`
-                                        <unCheckedPluginList>com.goldmansachs.jdmn:jdmn-maven-plugin,
-                                            org.jetbrains.kotlin:kotlin-maven-plugin
-                                        </unCheckedPluginList>
                                     </requirePluginVersions>
                                 </rules>
                             </configuration>
