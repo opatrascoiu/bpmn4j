@@ -15,6 +15,8 @@
         <module>langgraph4j-bpmn-runtime</module>
         <module>langgraph4j-bpmn-integration</module>
 
+        <module>langgraph4j-bpmn-maven-plugin</module>
+
         <module>langgraph4j-bpmn-aggregation</module>
     </modules>
 
@@ -262,6 +264,9 @@
                                         <banRelease>true</banRelease>
                                         <banSnapshots>${ban.snapshot}</banSnapshots>
                                         <phases>clean,deploy,site</phases>`
+                                        <unCheckedPluginList>com.workflow.langgraph4j-bpmn:langgraph4j-bpmn-maven-plugin,
+                                            org.jetbrains.kotlin:kotlin-maven-plugin
+                                        </unCheckedPluginList>
                                     </requirePluginVersions>
                                 </rules>
                             </configuration>

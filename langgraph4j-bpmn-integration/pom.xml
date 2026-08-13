@@ -13,6 +13,14 @@
     <packaging>jar</packaging>
 
     <properties>
+        <platform.version>${project.parent.version}</platform.version>
+
+        <bpmn.diagram.folder>${project.basedir}/../bpmn-test-cases/bpmn/</bpmn.diagram.folder>
+
+        <generated.source.code.folder>${project.build.directory}/generated-sources/bpmn</generated.source.code.folder>
+        <generated.root.package>com.gs.bpmn.generated</generated.root.package>
+
+        <line.coverage.minimum>0.00</line.coverage.minimum>
     </properties>
 
     <dependencies>
@@ -53,9 +61,96 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>com.workflow.langgraph4j-bpmn</groupId>
+                <artifactId>langgraph4j-bpmn-maven-plugin</artifactId>
+                <version>${project.parent.version}</version>
+                <executions>
+                    <execution>
+                        <id>test-1</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>bpmn-to-java</goal>
+                        </goals>
+                        <configuration>
+                            <inputFileDirectory>${bpmn.diagram.folder}/test-1.bpmn</inputFileDirectory>
+                            <outputFileDirectory>${generated.source.code.folder}</outputFileDirectory>
+                            <inputParameters>
+                                <nativeRootPackage>${generated.root.package}.test_1</nativeRootPackage>
+                            </inputParameters>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-2</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>bpmn-to-java</goal>
+                        </goals>
+                        <configuration>
+                            <inputFileDirectory>${bpmn.diagram.folder}/test-2.bpmn</inputFileDirectory>
+                            <outputFileDirectory>${generated.source.code.folder}</outputFileDirectory>
+                            <inputParameters>
+                                <nativeRootPackage>${generated.root.package}.test_2</nativeRootPackage>
+                            </inputParameters>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-2-scripts</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>bpmn-to-java</goal>
+                        </goals>
+                        <configuration>
+                            <inputFileDirectory>${bpmn.diagram.folder}/test-2-scripts.bpmn</inputFileDirectory>
+                            <outputFileDirectory>${generated.source.code.folder}</outputFileDirectory>
+                            <inputParameters>
+                                <nativeRootPackage>${generated.root.package}.test_2_scripts</nativeRootPackage>
+                            </inputParameters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-clean-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>add-generated-classes-to-classpath</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>${generated.source.code.folder}</source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>add-generated-resources-to-classpath</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                        <configuration>
+                            <resources>
+                                <resource>
+                                    <directory>${generated.source.code.folder}</directory>
+                                    <excludes>
+                                        <exclude>**/*.java</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -876,4 +876,20 @@ public class BPMNModelRepository {
         }
         return displayName(model);
     }
+
+    public String getExtensionAttribute(TBaseElement node, String attributeName) {
+        if (node == null || StringUtils.isBlank(attributeName)) {
+            return null;
+        }
+
+        Map<QName, String> otherAttributes = node.getOtherAttributes();
+        if (otherAttributes != null) {
+            for (Map.Entry<QName, String> entry : otherAttributes.entrySet()) {
+                if (entry.getKey().getLocalPart().equals(attributeName)) {
+                    return entry.getValue();
+                }
+            }
+        }
+        return null;
+    }
 }

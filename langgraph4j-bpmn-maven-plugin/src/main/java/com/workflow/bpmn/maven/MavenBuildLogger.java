@@ -1,0 +1,80 @@
+/*
+ * Copyright 2016 Goldman Sachs.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
+ *
+ * You may obtain a copy of the License at
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations under the License.
+ */
+package com.workflow.bpmn.maven;
+
+import com.workflow.bpmn.model.log.BuildLogger;
+import org.apache.maven.plugin.logging.Log;
+
+public class MavenBuildLogger implements BuildLogger {
+    private final Log logger;
+
+    public MavenBuildLogger(Log logger) {
+        this.logger = logger;
+    }
+
+    @Override
+    public void debug(String charSequence) {
+        if (logger.isDebugEnabled()) {
+            this.logger.debug(charSequence);
+        }
+    }
+
+    @Override
+    public void debug(String charSequence, Throwable throwable) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(charSequence, throwable);
+        }
+    }
+
+    @Override
+    public void info(String charSequence) {
+        if (logger.isInfoEnabled()) {
+            this.logger.info(charSequence);
+        }
+    }
+
+    @Override
+    public void info(String charSequence, Throwable throwable) {
+        if (logger.isInfoEnabled()) {
+            logger.info(charSequence, throwable);
+        }
+    }
+
+    @Override
+    public void warn(String charSequence) {
+        if (logger.isWarnEnabled()) {
+            this.logger.warn(charSequence);
+        }
+    }
+
+    @Override
+    public void warn(String charSequence, Throwable throwable) {
+        if (logger.isWarnEnabled()) {
+            logger.warn(charSequence, throwable);
+        }
+    }
+
+    @Override
+    public void error(String charSequence) {
+        if (logger.isErrorEnabled()) {
+            this.logger.error(charSequence);
+        }
+    }
+
+    @Override
+    public void error(String charSequence, Throwable throwable) {
+        if (logger.isErrorEnabled()) {
+            logger.error(charSequence, throwable);
+        }
+    }
+}
