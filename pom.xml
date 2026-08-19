@@ -3,21 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.workflow.langgraph4j-bpmn</groupId>
-    <artifactId>langgraph4j-bpmn-parent</artifactId>
+    <groupId>org.workflow.bpmn4j</groupId>
+    <artifactId>bpmn4j-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>langgraph4j-bpmn-model</module>
-        <module>langgraph4j-bpmn-translator</module>
+        <module>bpmn4j-model</module>
 
-        <module>langgraph4j-bpmn-runtime</module>
-        <module>langgraph4j-bpmn-integration</module>
+        <module>bpmn4j-langgraph</module>
 
-        <module>langgraph4j-bpmn-maven-plugin</module>
-
-        <module>langgraph4j-bpmn-aggregation</module>
+        <module>bpmn4j-aggregation</module>
     </modules>
 
     <properties>
@@ -124,20 +120,8 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.workflow.langgraph4j-bpmn</groupId>
-                <artifactId>langgraph4j-bpmn-model</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.workflow.langgraph4j-bpmn</groupId>
-                <artifactId>langgraph4j-bpmn-translator</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.workflow.langgraph4j-bpmn</groupId>
-                <artifactId>langgraph4j-bpmn-runtime</artifactId>
+                <groupId>org.workflow.bpmn4j</groupId>
+                <artifactId>bpmn4j-model</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -264,7 +248,7 @@
                                         <banRelease>true</banRelease>
                                         <banSnapshots>${ban.snapshot}</banSnapshots>
                                         <phases>clean,deploy,site</phases>`
-                                        <unCheckedPluginList>com.workflow.langgraph4j-bpmn:langgraph4j-bpmn-maven-plugin,
+                                        <unCheckedPluginList>org.workflow.bpmn4j:bpmn4j-langgraph-maven-plugin,
                                             org.jetbrains.kotlin:kotlin-maven-plugin
                                         </unCheckedPluginList>
                                     </requirePluginVersions>

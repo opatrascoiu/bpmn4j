@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.workflow.langgraph4j-bpmn</groupId>
-        <artifactId>langgraph4j-bpmn-parent</artifactId>
+        <groupId>org.workflow.bpmn4j</groupId>
+        <artifactId>bpmn4j-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>langgraph4j-bpmn-model</artifactId>
+    <artifactId>bpmn4j-model</artifactId>
     <packaging>jar</packaging>
 
     <properties>

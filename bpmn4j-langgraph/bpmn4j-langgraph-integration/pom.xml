@@ -4,18 +4,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.workflow.langgraph4j-bpmn</groupId>
-        <artifactId>langgraph4j-bpmn-parent</artifactId>
+        <groupId>org.workflow.bpmn4j</groupId>
+        <artifactId>bpmn4j-langgraph</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>langgraph4j-bpmn-integration</artifactId>
+    <artifactId>bpmn4j-langgraph-integration</artifactId>
     <packaging>jar</packaging>
 
     <properties>
         <platform.version>${project.parent.version}</platform.version>
 
-        <bpmn.diagram.folder>${project.basedir}/../bpmn-test-cases/bpmn/</bpmn.diagram.folder>
+        <bpmn.diagram.folder>${project.basedir}/../../bpmn-test-cases/bpmn/</bpmn.diagram.folder>
 
         <generated.source.code.folder>${project.build.directory}/generated-sources/bpmn</generated.source.code.folder>
         <generated.root.package>com.gs.bpmn.generated</generated.root.package>
@@ -25,8 +25,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.workflow.langgraph4j-bpmn</groupId>
-            <artifactId>langgraph4j-bpmn-runtime</artifactId>
+            <groupId>org.workflow.bpmn4j</groupId>
+            <artifactId>bpmn4j-langgraph-runtime</artifactId>
             <version>${project.version}</version>
         </dependency>
 
@@ -61,8 +61,8 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.workflow.langgraph4j-bpmn</groupId>
-                <artifactId>langgraph4j-bpmn-maven-plugin</artifactId>
+                <groupId>org.workflow.bpmn4j</groupId>
+                <artifactId>bpmn4j-langgraph-maven-plugin</artifactId>
                 <version>${project.parent.version}</version>
                 <executions>
                     <execution>

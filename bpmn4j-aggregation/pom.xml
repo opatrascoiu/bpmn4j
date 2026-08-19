@@ -3,12 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.workflow.langgraph4j-bpmn</groupId>
-        <artifactId>langgraph4j-bpmn-parent</artifactId>
+        <groupId>org.workflow.bpmn4j</groupId>
+        <artifactId>bpmn4j-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>langgraph4j-bpmn-aggregation</artifactId>
+    <artifactId>bpmn4j-aggregation</artifactId>
     <packaging>jar</packaging>
 
     <properties>
@@ -17,18 +17,23 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.workflow.langgraph4j-bpmn</groupId>
-            <artifactId>langgraph4j-bpmn-model</artifactId>
+            <groupId>org.workflow.bpmn4j</groupId>
+            <artifactId>bpmn4j-model</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.workflow.langgraph4j-bpmn</groupId>
-            <artifactId>langgraph4j-bpmn-translator</artifactId>
+            <groupId>org.workflow.bpmn4j</groupId>
+            <artifactId>bpmn4j-langgraph-translator</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.workflow.langgraph4j-bpmn</groupId>
-            <artifactId>langgraph4j-bpmn-runtime</artifactId>
+            <groupId>org.workflow.bpmn4j</groupId>
+            <artifactId>bpmn4j-langgraph-runtime</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.workflow.bpmn4j</groupId>
+            <artifactId>bpmn4j-langgraph-integration</artifactId>
             <version>${project.version}</version>
         </dependency>
 
