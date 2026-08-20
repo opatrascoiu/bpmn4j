@@ -15,7 +15,7 @@ class MainProcessTest {
         Map<String, Object> initialState = Map.of("path", 1);
         Map<String, Object> finalState = process.execute(initialState);
 
-        assertEquals(4, finalState.keySet().size());
+        assertEquals(4, finalState.size());
         assertEquals(1, finalState.get("path"));
         assertEquals("branch 1", finalState.get("branch"));
         assertEquals(21, finalState.get("result"));
@@ -27,7 +27,7 @@ class MainProcessTest {
         Map<String, Object> initialState = Map.of("path", 2);
         Map<String, Object> finalState = process.execute(initialState);
 
-        assertEquals(4, finalState.keySet().size());
+        assertEquals(4, finalState.size());
         assertEquals(2, finalState.get("path"));
         assertEquals("branch 2", finalState.get("branch"));
         assertEquals(22, finalState.get("result"));
@@ -39,7 +39,7 @@ class MainProcessTest {
         Map<String, Object> initialState = Map.of("path", 3);
         Map<String, Object> finalState = process.execute(initialState);
 
-        assertEquals(4, finalState.keySet().size());
+        assertEquals(4, finalState.size());
         assertEquals(3, finalState.get("path"));
         assertEquals("branch 3", finalState.get("branch"));
         assertEquals(23, finalState.get("result"));
@@ -51,7 +51,7 @@ class MainProcessTest {
         Map<String, Object> initialState = Map.of("path", 5);
         Map<String, Object> finalState = process.execute(initialState);
 
-        assertEquals(3, finalState.keySet().size());
+        assertEquals(3, finalState.size());
         assertEquals(5, finalState.get("path"));
         assertEquals(21, finalState.get("result"));
         assertEquals(22, finalState.get("finalResult"));
