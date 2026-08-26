@@ -12,6 +12,7 @@
         <module>bpmn4j-model</module>
 
         <module>bpmn4j-langgraph</module>
+        <module>bpmn4j-adk</module>
 
         <module>bpmn4j-aggregation</module>
     </modules>
@@ -218,6 +219,12 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>

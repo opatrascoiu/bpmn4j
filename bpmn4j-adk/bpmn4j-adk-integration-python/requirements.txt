@@ -1,0 +1,7 @@
+# Install the core ADK package
+google-adk
+
+# Install additional dependencies for our labs
+python-dotenv
+asyncio
+

@@ -66,10 +66,16 @@ public class MainProcess {
     }
 
     public static void main(String[] args) throws GraphStateException {
+        // Start time
+        long startTime = System.nanoTime();
+
+        // Execute
+        Map<String, Object> initialState = Map.of("path", 2);
         MainProcess mainProcess = new MainProcess();
 
-        // Initial State
-        Map<String, Object> initialState = Map.of("path", 2);
+        // Start time
+        long endTime = System.nanoTime();
+        System.out.printf("mainProcess time: %,d ns%n", endTime - startTime);
 
         System.out.println("Initial State: " + initialState);
         System.out.println("Final State: " + mainProcess.execute(initialState));
