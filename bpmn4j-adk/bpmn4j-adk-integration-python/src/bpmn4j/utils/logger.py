@@ -5,7 +5,7 @@ import os
 
 def get_logger(name):
     logger = logging.getLogger(name)
-    level = os.getenv("LOG_LEVEL", "INFO")
+    level = os.getenv("LOG_LEVEL", "ERROR")
     logger.setLevel(getattr(logging, level))
     # Create console handler
     ch = logging.StreamHandler()

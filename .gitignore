@@ -41,3 +41,4 @@ build/
 sphink-doc/
 test-reports/
 .tox
+*.lprof

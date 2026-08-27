@@ -5,3 +5,6 @@ google-adk
 python-dotenv
 asyncio
 
+# Install profiler
+line_profiler
+pyperf
