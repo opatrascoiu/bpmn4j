@@ -14,8 +14,8 @@ class MainProcessTest(TestCase):
         }
         events = self.mainProcess.execute(context)
 
-        self.assertEqual(2, len(events))
-        expectedEvents = ['start', 't1']
+        self.assertEqual(7, len(events))
+        expectedEvents = ['start', 't1', 'gate11', 't21', 'gate12', 't3', 'end']
         self.assertEqual(expectedEvents, [event.node_name for event in events])
 
     def testPath1(self):

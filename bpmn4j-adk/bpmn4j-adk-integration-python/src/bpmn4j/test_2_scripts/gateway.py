@@ -10,7 +10,7 @@ def start(context: Context):
 
 
 def t1(context: Context):
-    path = context.state["path"]
+    path = context.state.get("path")
     result = ""
     if path == 1:
         result = "branch1"
