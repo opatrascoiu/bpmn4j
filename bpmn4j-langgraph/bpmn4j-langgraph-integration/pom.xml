@@ -107,6 +107,20 @@
                             </inputParameters>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>test-3-loop</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>bpmn-to-java</goal>
+                        </goals>
+                        <configuration>
+                            <inputFileDirectory>${bpmn.diagram.folder}/test-3-loop.bpmn</inputFileDirectory>
+                            <outputFileDirectory>${generated.source.code.folder}</outputFileDirectory>
+                            <inputParameters>
+                                <nativeRootPackage>${generated.root.package}.test_3_loop</nativeRootPackage>
+                            </inputParameters>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 

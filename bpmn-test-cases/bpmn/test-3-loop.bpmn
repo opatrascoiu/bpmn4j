@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1m06f78" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.49.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.24.0">
+  <bpmn:process id="Process_1n8zsuz" name="MainProcess" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_0gh4x4y</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_1hx92eo" name="Agent">
+      <bpmn:incoming>Flow_006ocpx</bpmn:incoming>
+      <bpmn:incoming>Flow_0s9z9rh</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qicew0</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_1d6buzc" name="G1" default="Flow_1menowo">
+      <bpmn:incoming>Flow_0qicew0</bpmn:incoming>
+      <bpmn:outgoing>Flow_1menowo</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0odzfgv</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0qicew0" sourceRef="Activity_1hx92eo" targetRef="Gateway_1d6buzc" />
+    <bpmn:sequenceFlow id="Flow_1menowo" sourceRef="Gateway_1d6buzc" targetRef="Activity_03wf6nj" />
+    <bpmn:sequenceFlow id="Flow_0s9z9rh" sourceRef="Activity_03wf6nj" targetRef="Activity_1hx92eo" />
+    <bpmn:endEvent id="Event_0uqvduf" name="End">
+      <bpmn:incoming>Flow_0odzfgv</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0odzfgv" name="Done" sourceRef="Gateway_1d6buzc" targetRef="Event_0uqvduf">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${counter &gt; 5}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:scriptTask id="Activity_03wf6nj" name="Delta" scriptFormat="groovy" camunda:resultVariable="counter">
+      <bpmn:incoming>Flow_1menowo</bpmn:incoming>
+      <bpmn:outgoing>Flow_0s9z9rh</bpmn:outgoing>
+      <bpmn:script>counter = counter + 1</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_0gh4x4y" sourceRef="StartEvent_1" targetRef="Activity_0g8008n" />
+    <bpmn:scriptTask id="Activity_0g8008n" name="Init" scriptFormat="groovy" camunda:resultVariable="counter">
+      <bpmn:incoming>Flow_0gh4x4y</bpmn:incoming>
+      <bpmn:outgoing>Flow_006ocpx</bpmn:outgoing>
+      <bpmn:script>counter = 0</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_006ocpx" sourceRef="Activity_0g8008n" targetRef="Activity_1hx92eo" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1n8zsuz">
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="182" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="188" y="155" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0uqvduf_di" bpmnElement="Event_0uqvduf">
+        <dc:Bounds x="922" y="112" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="930" y="155" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1d6buzc_di" bpmnElement="Gateway_1d6buzc" isMarkerVisible="true">
+        <dc:Bounds x="735" y="105" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="752" y="81" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17moagr_di" bpmnElement="Activity_0g8008n">
+        <dc:Bounds x="270" y="90" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1hx92eo_di" bpmnElement="Activity_1hx92eo">
+        <dc:Bounds x="510" y="90" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0b66mj8_di" bpmnElement="Activity_03wf6nj">
+        <dc:Bounds x="510" y="250" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0qicew0_di" bpmnElement="Flow_0qicew0">
+        <di:waypoint x="610" y="130" />
+        <di:waypoint x="735" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1menowo_di" bpmnElement="Flow_1menowo">
+        <di:waypoint x="760" y="155" />
+        <di:waypoint x="760" y="290" />
+        <di:waypoint x="610" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s9z9rh_di" bpmnElement="Flow_0s9z9rh">
+        <di:waypoint x="560" y="250" />
+        <di:waypoint x="560" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0odzfgv_di" bpmnElement="Flow_0odzfgv">
+        <di:waypoint x="785" y="130" />
+        <di:waypoint x="922" y="130" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="840" y="112" width="27" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gh4x4y_di" bpmnElement="Flow_0gh4x4y">
+        <di:waypoint x="218" y="130" />
+        <di:waypoint x="270" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_006ocpx_di" bpmnElement="Flow_006ocpx">
+        <di:waypoint x="370" y="130" />
+        <di:waypoint x="510" y="130" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
