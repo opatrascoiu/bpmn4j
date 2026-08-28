@@ -11,6 +11,7 @@ def operation():
     }
     process.execute(context)
 
+
 if __name__ == "__main__":
     runner = pyperf.Runner(
         warmups=10,
@@ -19,4 +20,3 @@ if __name__ == "__main__":
     )
 
     runner.bench_func("operation", operation)
-

@@ -1,16 +1,17 @@
 
 import json
+from typing import Any, Dict
 
 from google.adk import Workflow, Event, Runner, Context
 from google.genai import types
 
 
-def start(context: Context):
+def start(context: Context) -> Context:
     return context
 
 
-def t1(context: Context):
-    path = context.state.get("path")
+def t1(context: Context) -> Context:
+    path = get_state(context, "path")
     result = ""
     if path == 1:
         result = "branch1"
@@ -18,12 +19,12 @@ def t1(context: Context):
         result = "branch2"
     elif path == 3:
         result = "branch3"
-    context.state["branch"] = result
+    set_state(context, "branch", result)
     return context
 
 
-def gate11(context: Context):
-    branch = context.state["branch"]
+def gate11(context: Context) -> Context:
+    branch = get_state(context, "branch")
     if branch == "branch1":
         return Event(route="branch1")
     elif branch == "branch2":
@@ -33,31 +34,31 @@ def gate11(context: Context):
     return Event(route="branch1")
 
 
-def t21(context: Context):
+def t21(context: Context) -> Context:
     result = 21
-    context.state["result"] = result
+    set_state(context, "result", result)
     return context
 
 
-def t22(context: Context):
+def t22(context: Context) -> Context:
     result = 22
-    context.state["result"] = result
+    set_state(context, "result", result)
     return context
 
 
-def t23(context: Context):
+def t23(context: Context) -> Context:
     result = 23
-    context.state["result"] = result
+    set_state(context, "result", result)
     return context
 
 
-def gate12(context: Context):
+def gate12(context: Context) -> Context:
     return context
 
 
-def t3(context: Context):
-    result = context.state["result"]
-    context.state["finalResult"] = result + 1
+def t3(context: Context) -> Context:
+    result = get_state(context, "result")
+    set_state(context, "finalResult", result + 1)
     return context
 
 
@@ -89,6 +90,22 @@ root_agent = Workflow(
         (t3, end)
     ]
 )
+
+
+def get_state(context: Any, name: str):
+    if isinstance(context, Context):
+        return context.state.get(name)
+    elif isinstance(context, Dict):
+        return context.get("state").get(name)
+    else:
+        return None
+
+
+def set_state(context: Any, name: str, value: Any):
+    if isinstance(context, Context):
+        context.state[name] = value
+    elif isinstance(context, Dict):
+        context.get("state")[name] = value
 
 
 # Define a convenience function to query the agent
