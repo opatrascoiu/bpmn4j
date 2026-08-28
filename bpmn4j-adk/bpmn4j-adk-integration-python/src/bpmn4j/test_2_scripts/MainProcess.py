@@ -27,7 +27,7 @@ class MainProcess:
 
             # Create a session for our agent
             session = create_session(runner, self.appName, self.userId)
-            self.LOGGER.info(f"Session created: App='{self.appName}', User='{self.userId}', Session='{self.sessionId}'")
+            self.LOGGER.debug(f"Session created: App='{self.appName}', User='{self.userId}', Session='{self.sessionId}'")
 
             result = runner.run(user_id=self.userId, session_id=session.id, state_delta=context,
                              new_message=types.Content(role="user", parts=[types.Part(text="hello")]))

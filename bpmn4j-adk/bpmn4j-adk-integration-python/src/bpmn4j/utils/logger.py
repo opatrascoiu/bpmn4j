@@ -1,15 +1,12 @@
 # utils/logger.py
+from pathlib import Path
 import logging
-import os
+import logging.config
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 
 def get_logger(name):
+    logging.config.fileConfig(PROJECT_ROOT / 'logging.conf')
     logger = logging.getLogger(name)
-    level = os.getenv("LOG_LEVEL", "ERROR")
-    logger.setLevel(getattr(logging, level))
-    # Create console handler
-    ch = logging.StreamHandler()
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
     return logger
